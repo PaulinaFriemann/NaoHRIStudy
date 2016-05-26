@@ -7,9 +7,14 @@ Created on Thu May 19 11:43:13 2016
 
 import positions
 import effector
+import time
+from speech_recognition import Speech_recognition
+
 from naoqi import ALProxy
 
-def main(IP = "10.0.1.10", PORT = 9559):
+def main(IP = "10.0.1.4", PORT = 9559):
+    
+    
 
     print('main called')    
     
@@ -24,36 +29,22 @@ def main(IP = "10.0.1.10", PORT = 9559):
         print "Error was: ", e
         
     # initialize motion proxy
-    postureProxy = ALProxy("ALRobotPosture", IP, PORT)
+    #postureProxy = ALProxy("ALRobotPosture", IP, PORT)
+        
+    motionProxy.setStiffnesses("Body", 0)
     
-    motionProxy.wakeUp()
-    motionProxy.closeHand('LHand')
-    motionProxy.stiffnessInterpolation('LHand',1,0.01)
+    #motionProxy.wakeUp()
+    #motionProxy.closeHand('LHand')
+    #motionProxy.stiffnessInterpolation('LHand',1,0.01)
     
     # initialize speech recognition proxy
-    speechRecProxy.setLanguage("English")
-    vocabulary = ["zero", "one", "two", "three", "four", "five", "six", "seven", 
-                  "eight", "nine", "ten", "yes", "no"]
-    speechRecProxy.setVocabulary(vocabulary, True)
-    speechRecProxy.subscribe("ASR")
-    eventName = "ALSpeechRecognition/WordRecognized"
-    
-    try:
-        while True:
-            time.sleep(1)
-            print(memoryProxy.getData("WordRecognized"))
-    except KeyboardInterrupt:
-        print
-        print "Interrupted by user"
-        print "Stopping..."
-    
-    
-    
+    asr = Speech_recognition(IP, PORT)
+    asr.start_recognition()
     
         
     #postureProxy.goToPosture("Sit", 0.5)
     
-    leftArmEffector = effector.Effector('LArm','LWristYaw',motionProxy)
+    #leftArmEffector = effector.Effector('LArm','LWristYaw',motionProxy)
     
     testPos = [0.10129939019680023, 0.22932101786136627, 0.23544558882713318] 
     testRot = []
