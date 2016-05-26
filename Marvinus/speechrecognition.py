@@ -8,12 +8,9 @@ from naoqi import ALProxy
 import time
 
 
-class Speech_recognition():
+class SpeechRecognition:
     
     def __init__(self, IP, PORT):
-        
-
-        
         try:
             self.speechRecProxy = ALProxy("ALSpeechRecognition", IP, PORT)
             self.memoryProxy = ALProxy("ALMemory", IP, PORT)
@@ -26,7 +23,6 @@ class Speech_recognition():
             self.speechRecProxy.unsubscribe("ASR")
         except:
             pass
-            
            
         self.speechRecProxy.setLanguage("English")
         self.vocabulary = ["zero", "one", "two", "three", "four", "five", "six", "seven", 
