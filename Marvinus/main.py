@@ -6,13 +6,13 @@ Created on Thu May 19 11:43:13 2016
 """
 
 import positions
-from effector import Effector
+#from effector import Effector
 from speechrecognition import SpeechRecognition
 
 from naoqi import ALProxy
 
 
-def main(IP = "10.0.1.4", PORT = 9559):
+def main(IP = "10.0.1.7", PORT = 9559):
     print('main called')    
     
     try:
@@ -42,10 +42,10 @@ def main(IP = "10.0.1.4", PORT = 9559):
     
     #leftArmEffector.move_to_absolute_position(testPos, testRot)
     
-    arm, pos, hand, rot = positions.get_position('C')
+  #  arm, pos, hand, rot = positions.get_position('C')
     #leftArmEffector.move_to_absolute_position(pos, rot)
     
-    arm, pos, hand, rot = positions.get_position('D')
+ #   arm, pos, hand, rot = positions.get_position('D')
     #leftArmEffector.move_to_absolute_position(pos, rot)
     
 
