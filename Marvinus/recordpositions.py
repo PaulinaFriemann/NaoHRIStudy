@@ -5,8 +5,10 @@ import time
 PORT = 9559
 IP = "10.0.1.7" 
 
-leftArmEffector = Effector('LArm','LWristYaw', IP, PORT)
-leftArmEffector.hit_key('C')
+
+
+effector = Effector(IP, PORT)
+effector.hit_key('C')
 while True:
     arm,position,default = positions.get_position('D' )
     leftArmEffector.move_to_absolute_position(position,default,arm)

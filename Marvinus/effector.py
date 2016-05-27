@@ -31,9 +31,11 @@ class Effector:
 
     def move_to_absolute_position(self, position, default, arm):      
         self.proxy.setAngles(arm,position[1],0.2)
-        time.sleep(0.1)
-        self.proxy.setAngles(arm,position[0],0.2)
-        time.sleep(0.2)
+        time.sleep(0.3)
+        self.proxy.setAngles(arm,position[0],0.1)
+        time.sleep(0.3)
+        self.proxy.setAngles(arm,position[1],0.1)
+        time.sleep(0.4)
         self.proxy.setAngles(arm,default,0.2)            
     
     def get_absolute_position(self,arm):

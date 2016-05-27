@@ -34,7 +34,7 @@ def main(IP = "10.0.1.7", PORT = 9559):
     #postureProxy.goToPosture("Sit", 0.5)
     
     # initialize effector
-    leftArmEffector = Effector('LArm','LWristYaw', IP, PORT)
+    effector = Effector(IP, PORT)
     
     
     
