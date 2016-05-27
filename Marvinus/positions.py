@@ -5,28 +5,18 @@ Created on Thu May 19 12:03:07 2016
 @author: Gast1
 """
 
-default_positions = {
-    'LArm': [0.10129939019680023, 0.22932101786136627, 0.23544558882713318],
-    'RArm': []
-}
-
-default_rotations = {
-    'LArm': [],
-    'RArm': []
-}
-
-defaults = {
-    'position': default_positions,
-    'rotation': default_rotations
-}
 
 positions_left = {}
 positions_right = {}
 
-positions_left['C'] = [0.12560521066188812, 0.2638903856277466, 0.17710906267166138]
-positions_left['D'] = [0.05927547812461853, 0.24047115445137024, 0.18063606321811676]
-positions_left['E'] = []
-positions_left['F'] = []
+
+
+
+positions_left['C'] = [[0.9801840782165527, 0.7454819679260254, -1.5371098518371582, -0.5782761573791504, 1.3529460430145264, 0.9139999747276306],[0.9817180633544922, 0.7500841617584229, -1.5355758666992188, -0.5782761573791504, 0.9663779735565186, 0.9139999747276306]]
+positions_left['D'] = [[0.951038122177124, 0.6887240409851074, -1.4404678344726562, -0.5936160087585449, 1.2885180711746216, 0.9139999747276306],[0.9541060924530029, 0.6963939666748047, -1.4404678344726562, -0.590548038482666, 0.9341640472412109, 0.9139999747276306]]
+positions_left['E'] = [[0.8804740905761719, 0.610490083694458, -1.3837099075317383, -0.5966839790344238, 1.345276117324829, 0.9139999747276306],[0.877406120300293, 0.6181600093841553, -1.3852438926696777, -0.5936160087585449, 0.98785400390625, 0.9143999814987183]]
+positions_left['F'] = [[0.7838320732116699, 0.5153820514678955, -1.3269519805908203, -0.5982179641723633, 1.4557241201400757, 0.9143999814987183],[0.7838320732116699, 0.5322561264038086, -1.3300199508666992, -0.5890140533447266, 1.0737581253051758, 0.9139999747276306]]
+
 
 positions_right['G'] = []
 positions_right['A'] = []
@@ -38,37 +28,29 @@ positions = {
     'RArm': positions_right
 }
 
-rotations_left = {}
-rotations_right = {}
-
-rotations_left['C'] = [0.39879798889160156]
-rotations_left['D'] = []
-rotations_left['E'] = []
-rotations_left['F'] = []
-
-rotations_right['G'] = []
-rotations_right['A'] = []
-rotations_right['B'] = []
-rotations_right['Ch'] = []
-
-rotations = {
-    'LArm': rotations_left,
-    'RArm': rotations_right
-}
 
 keys = {
-    'position': positions,
-    'rotation': rotations
+    'position': positions
+}
+
+default_positions = {
+    'LArm': [0.9356980323791504, 0.6825881004333496, -1.392913818359375, -0.5629360675811768, 0.98785400390625, 0.9143999814987183],
+    'RArm': []
+}
+
+
+
+defaults = {
+    'position': default_positions
 }
 
 
 def get_default_position(key):
     arm = key #'LArm' if key in positions_left else 'RArm'
-    hand = 'LWristYaw' if arm == 'LArm' else 'RWristYaw'
-    return arm, defaults['position'][arm], hand, defaults['rotation'][arm]
+    return arm, defaults['position'][arm]
 
 
 def get_position(key):
     arm = 'LArm' if key in positions_left else 'RArm'
-    hand = 'LWristYaw' if arm == 'LArm' else 'RWristYaw'
-    return arm, keys['position'][arm][key], hand, keys['rotation'][arm][key]
+    return arm, keys['position'][arm][key],defaults['position'][arm]
+    
