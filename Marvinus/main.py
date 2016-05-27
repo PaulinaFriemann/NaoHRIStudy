@@ -37,8 +37,8 @@ def main(IP = "10.0.1.7", PORT = 9559):
     # initialize effector
     #leftArmEffector = Effector('LArm','LWristYaw', IP, PORT)
     
-    testPos = [0.10129939019680023, 0.22932101786136627, 0.23544558882713318] 
-    testRot = []
+    #testPos = [0.10129939019680023, 0.22932101786136627, 0.23544558882713318] 
+    #testRot = []
     
     #leftArmEffector.move_to_absolute_position(testPos, testRot)
     
