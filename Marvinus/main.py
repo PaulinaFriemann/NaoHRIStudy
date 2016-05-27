@@ -6,7 +6,7 @@ Created on Thu May 19 11:43:13 2016
 """
 
 import positions
-from effector import Effector
+#from effector import Effector
 from speechrecognition import SpeechRecognition
 
 from naoqi import ALProxy
@@ -38,15 +38,22 @@ def main(IP = "10.0.1.7", PORT = 9559):
     
     
     
-    testPos = [0.10129939019680023, 0.22932101786136627, 0.23544558882713318] 
-    testRot = []
+    #testPos = [0.10129939019680023, 0.22932101786136627, 0.23544558882713318] 
+    #testRot = []
     
     #leftArmEffector.move_to_absolute_position(testPos, testRot)
     
+<<<<<<< HEAD
+  #  arm, pos, hand, rot = positions.get_position('C')
+    #leftArmEffector.move_to_absolute_position(pos, rot)
+    
+ #   arm, pos, hand, rot = positions.get_position('D')
+=======
     arm, pos, hand, rot = positions.get_position('C')
     leftArmEffector.move_to_absolute_position(pos, rot)
     
     #arm, pos, hand, rot = positions.get_position('D')
+>>>>>>> origin/master
     #leftArmEffector.move_to_absolute_position(pos, rot)
 
 
