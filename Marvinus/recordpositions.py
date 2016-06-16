@@ -8,6 +8,8 @@ IP = "10.0.1.7"
 
 
 effector = Effector(IP, PORT)
+effector.get_ready()
+effector.hit_key('F')
 
 
 

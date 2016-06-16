@@ -20,7 +20,8 @@ class Effector:
             print "could not create motion proxy"
             print "problem was: ", e
         self.proxy.setStiffnesses("Body", 1)
-        self.get_ready()
+        
+        self.chill()
         self.proxy.stiffnessInterpolation('LArm', 1, 0.01)
         self.proxy.stiffnessInterpolation('RArm', 1, 0.01)
 
@@ -39,13 +40,13 @@ class Effector:
         time.sleep(3)        
         self.proxy.setAngles('Body', [-0.05373191833496094, 0.16563010215759277, 0.4340801239013672, 0.837522029876709, 0.4279439449310303, -0.3481760025024414, -0.8882279396057129, 0.9139999747276306, -0.8298521041870117, 0.3467259407043457, -1.5354920625686646, 1.2885180711746216, 0.9188239574432373, 4.1961669921875e-05, -0.8298521041870117, -0.3803901672363281, -1.5355758666992188, 1.3775739669799805, 0.8606162071228027, 0.04146003723144531, 0.561486005783081, -0.6029040813446045, -0.06753802299499512, 0.1043539047241211, 0.7592880725860596, 0.9459999799728394],0.1)
 
-    def closeHands():
-        self.closeHand('LHand')
+    def closeHands(self):
+        self.proxy.closeHand('LHand')
         self.proxy.stiffnessInterpolation('LHand', 1, 0.01)
-        self.closeHand('RHand')
+        self.proxy.closeHand('RHand')
         self.proxy.stiffnessInterpolation('RHand', 1, 0.01)
         
-    def openHands():
+    def openHands(self):
         self.proxy.stiffnessInterpolation('LHand', 0, 0.01)
         self.proxy.stiffnessInterpolation('RHand', 0, 0.01)      
         
@@ -66,13 +67,13 @@ class Effector:
             wrist = 'RWristYaw'
         #print(arm)
         #print(position)
-        self.proxy.setAngles(arm,position[0],0.3)
-        time.sleep(0.2)
-        self.proxy.setAngles(wrist,position[1],0.5)
+        self.proxy.setAngles(arm,position[0],0.7)
+        time.sleep(0.4)
+        self.proxy.setAngles(wrist,position[1],0.6)
         time.sleep(0.3)
-        self.proxy.setAngles(arm,position[0],0.3)
-        time.sleep(0.2)
-        self.proxy.setAngles(arm,default,0.3)            
+        self.proxy.setAngles(arm,position[0],0.6)
+        time.sleep(0.15)
+        self.proxy.setAngles(arm,default,0.7)            
     
     def get_absolute_position(self,arm):
         keys = self.proxy.getAngles(arm, True)
