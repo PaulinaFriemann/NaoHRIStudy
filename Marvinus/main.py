@@ -1,7 +1,9 @@
 import jukebox
 from speechrecognition import SpeechRecognition
+from naoqi import ALProxy
 from effector import Effector
 import time, random
+from alfacetracker_start import FaceTracker
 
 maxsongs = len(jukebox.songslist)
 speech = None
@@ -30,10 +32,13 @@ def experiment(effector):
         speech.say_song(jukebox.titles[song])
         play_song(song,effector)
         speech.start_recognition(last_song = (i == maxsongs-1))
-        time.sleep(2)
+        
     speech.detroduce()
 
-def main(IP = "10.0.1.7", PORT = 9559, condition="social"): 
+def main(IP = "10.0.1.7", PORT = 9559, condition="social"):
+    # Enable or disable tracking.
+    
+    
     print('main called')    
     global speech
     effector = Effector(IP, PORT)
