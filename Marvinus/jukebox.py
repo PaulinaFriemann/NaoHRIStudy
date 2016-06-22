@@ -1,5 +1,5 @@
 
-qnotelength = 0.1; # quarter note length in seconds
+qnotelength = 0.05; # quarter note length in seconds
 
 song1 = [ # ode to joy 
 ('E',1),

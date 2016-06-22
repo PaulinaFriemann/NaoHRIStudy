@@ -5,15 +5,16 @@ import time, random
 
 maxsongs = len(jukebox.songslist)
 speech = None
-IP = "10.0.1.7"
+IP = "10.0.1.4"
 PORT = 9559
 condition="social"
+posture = None
 
 
 def play_song(index,effector):
     song = jukebox.songslist[index]
     effector.get_ready()
-    time.sleep(1)
+    time.sleep(2)
     for (note, length) in song:
         effector.hit_key(note)
         time.sleep(length)
@@ -21,7 +22,7 @@ def play_song(index,effector):
 
 def experiment(effector):
     global speech
-    #speech.introduce()
+    speech.introduce()
     arr = list(range(0,len(jukebox.songslist)))
     random.shuffle(arr)
     for i in range(0, maxsongs):

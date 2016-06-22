@@ -3,7 +3,7 @@ from effector import Effector
 import time
 
 PORT = 9559
-IP = "10.0.1.7" 
+IP = "10.0.1.4" 
 
 
 
