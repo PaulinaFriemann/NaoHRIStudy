@@ -1,4 +1,6 @@
-
+"""
+Songs and corresponding keys plus timing
+"""
 qnotelength = 0.05; # quarter note length in seconds
 
 song1 = [ # ode to joy 

@@ -13,6 +13,11 @@ posture = None
 
 
 def play_song(index,effector):
+    """
+    play a song
+    :param index: index in jukebox
+    :param effector: arms
+    """
     song = jukebox.songslist[index]
     effector.get_ready()
     time.sleep(2)
@@ -22,6 +27,10 @@ def play_song(index,effector):
     effector.chill()
 
 def experiment(effector):
+    """
+    main experiment
+    :param effector: arms
+    """
     global speech
     speech.introduce()
     arr = list(range(0,len(jukebox.songslist)))
@@ -44,5 +53,7 @@ def main(IP = "10.0.1.7", PORT = 9559, condition="psycho"):
     speech = SpeechRecognition(IP, PORT, condition=condition)
     experiment(effector)    
     #speech.speechRecProxy.unsubscribe("ASR")
-    
-main(IP,PORT,condition)
+
+if __name__ == '__main__':
+    main(IP, PORT, condition='social')
+

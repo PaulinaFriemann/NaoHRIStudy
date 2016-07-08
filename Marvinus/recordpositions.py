@@ -1,3 +1,6 @@
+"""
+Corresponding positions to keys
+"""
 import positions
 from effector import Effector
 import time
@@ -12,7 +15,7 @@ effector.get_ready()
 effector.hit_key('F')
 
 
-
+# test
 effector.hit_key('C')
 time.sleep(0.2)
 effector.hit_key('D')

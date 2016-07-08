@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu May 19 11:46:36 2016
-
-@author: Gast1
+Left and Right arm
 """
 import time
 import motion
@@ -29,11 +27,19 @@ class Effector:
 
 
     def hit_key(self,key, sleep_time=0.5):
+        """
+        Hit the specified key
+        :param key: char corresponding to key (Upper case) (e.g. 'C')
+        :param sleep_time:
+        """
         arm,position,default = positions.get_position(key)
         self.move_to_absolute_position(position,default,arm)
         time.sleep(sleep_time)
         
     def get_ready(self):
+        """
+        Get in hitting position
+        """
         global posture
 
         if posture == "getready":
@@ -61,6 +67,9 @@ class Effector:
         self.proxy.stiffnessInterpolation('RHand', 0, 0.01)      
         
     def chill(self):
+        """
+        Get in resting position
+        """
         global posture        
         
         if posture == "chill":
@@ -97,4 +106,9 @@ class Effector:
         return keys          
         
     def set_stiff(self, true, hand):
+        """
+        Set the hand stiffness
+        :param true: true if stiff, false if not
+        :param hand: left or right 'LHand'/'RHand'
+        """
         self.proxy.stiffnessInterpolation(hand, int(true), 0.01)

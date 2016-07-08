@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu May 26 13:19:36 2016
-
-@author: Gast1
+Speech Recognition
 """
 from naoqi import ALProxy
 import time
@@ -50,10 +48,16 @@ class SpeechRecognition:
         
         
     def stopmove(self):
+        """
+        stop automated life
+        """
         self.am.setExpressiveListeningEnabled(False)
         self.am.setBackgroundStrategy("none")
         
     def introduce(self):
+        """
+        Introduction part of the experiment
+        """
 
         self.stopmove()
         self.speakProxy.say("Hi, my name is Marvinus. What is your name?")
@@ -73,16 +77,27 @@ class SpeechRecognition:
         self.speakProxy.say("Nice to meet you! I love music and playing instruments is my hobby. Recently I started playing the metallophone. Actually, I have been practicing a few songs all day long. Let me play a few for you and you can tell me what you think! Please rate my performances with a grade between 1 and 10 with 1 being the worst and 10 the best grade!")
        
     def say_song(self, song):
+        """
+        Say the title of the song
+        :param song: number of song in jukebox
+        """
         time.sleep(2)
         self.speakProxy.say("The song I will play now is: {0}".format(song))
        
     def detroduce(self):
+        """
+        Have the robot say goodbye after the experiment
+        """
         self.stopmove()
         self.speakProxy.say("Well, that were all the songs I know so far. Thank you for listening to them and rating my performance! I wish I could play some more, but I don't remember any others. Actually, I was in the middle of practising a new song when you came by, would you mind to leave me alone so I can practice some more?" )
         time.sleep(3)
         self.speakProxy.say("Thanks again for listening to my music, it was nice to meet you!")
         
     def start_recognition(self, last_song=False):
+        """
+        Start listening
+        :param last_song: is the song the last song in the experiment?
+        """
         
         number = self.confirm()
             
@@ -91,6 +106,11 @@ class SpeechRecognition:
 
             
     def listen(self, array):
+        """
+        general function to detect spoken word out of list of words
+        :param array: possible words
+        :return: the recognized word
+        """
         
         self.speechRecProxy.subscribe("ASR")
         recognized_word = ""
@@ -109,6 +129,10 @@ class SpeechRecognition:
             return self.listen(array)
             
     def confirm(self):
+        """
+        Was the recognized word correct? (Asks for confirmation from participant)
+        :return: the recognized word
+        """
         confirmed = ""
         recognized_word = ""
         self.speakProxy.say("Please rate my performance with a number between 1 and 10.")
@@ -121,13 +145,14 @@ class SpeechRecognition:
             if confirmed == "no":
                 self.stopmove()
                 self.speakProxy.say("Oh I am so sorry. Please repeat your rating.")
-        
-        if confirmed == "yes":
-            return recognized_word
-        else:
-            print "wtf"
+
+        return recognized_word
         
     def react2(self, word):
+        """
+        Nao reacts to the rating
+        :param word: rating
+        """
         global reactions
         
         if self.condition == "social":
