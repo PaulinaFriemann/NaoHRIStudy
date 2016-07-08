@@ -7,7 +7,6 @@ Created on Thu May 26 13:19:36 2016
 from naoqi import ALProxy
 import time
 import random
-from alfacetracker_start import FaceTracker
         
 def onLoad(self):
     self.am = ALProxy("ALAutonomousMoves")
@@ -38,8 +37,6 @@ class SpeechRecognition:
         except:
             pass
 
-        self.faceProxy = FaceTracker(IP, PORT)
-        self.faceProxy.start()
 
         self.condition = condition
            
@@ -50,7 +47,6 @@ class SpeechRecognition:
         
         self.eventName = "ALSpeechRecognition/WordRecognized"
         self.wordSpotted = "ALSpeechRecognition/SpeechDetected"
-        self.memValue = "FaceDetected"
         
         
     def stopmove(self):
@@ -59,7 +55,6 @@ class SpeechRecognition:
         
     def introduce(self):
 
-        self.faceProxy.stop()
         self.stopmove()
         self.speakProxy.say("Hi, my name is Marvinus. What is your name?")
         self.speechRecProxy.subscribe("ASR")
@@ -76,20 +71,16 @@ class SpeechRecognition:
         self.speechRecProxy.unsubscribe("ASR")
         self.stopmove()
         self.speakProxy.say("Nice to meet you! I love music and playing instruments is my hobby. Recently I started playing the metallophone. Actually, I have been practicing a few songs all day long. Let me play a few for you and you can tell me what you think! Please rate my performances with a grade between 1 and 10 with 1 being the worst and 10 the best grade!")
-        self.faceProxy.start()
        
     def say_song(self, song):
-        self.faceProxy.start()
         time.sleep(2)
         self.speakProxy.say("The song I will play now is: {0}".format(song))
-        self.faceProxy.stop()
        
     def detroduce(self):
         self.stopmove()
         self.speakProxy.say("Well, that were all the songs I know so far. Thank you for listening to them and rating my performance! I wish I could play some more, but I don't remember any others. Actually, I was in the middle of practising a new song when you came by, would you mind to leave me alone so I can practice some more?" )
         time.sleep(3)
         self.speakProxy.say("Thanks again for listening to my music, it was nice to meet you!")
-        self.faceProxy.start()
         
     def start_recognition(self, last_song=False):
         
@@ -250,7 +241,7 @@ class SpeechRecognition:
                     if lottery == 1:
                         self.speakProxy.say("The piece is a bit difficult for me, but I am glad you at least weren't completely unsatisfied.")
                     elif lottery == 2:
-                        self.speakProxy.say("Well a six is a passing grade, but I hope I can do better than this.")
+                        self.speakProxy.say("Well a it is a passing grade, but I hope I can do better than this.")
                     elif lottery == 3:    
                         self.speakProxy.say("I had hoped I did better, but it's better than nothing.")
                 elif word == "seven":
@@ -259,7 +250,7 @@ class SpeechRecognition:
                     elif lottery == 2:
                         self.speakProxy.say("I will be a professional one day! But I need to practice a lot more.")
                     elif lottery == 3:
-                        self.speakProxy.say("Wow, you gave me a seven!")
+                        self.speakProxy.say("Wow, you gave me a eight!")
                     
                 elif word == "eight" or word == "nine":
                     if lottery == 1:

@@ -25,8 +25,8 @@ class Effector:
         time.sleep(1)
         self.chill()
         posture = "chill" 
-        self.proxy.stiffnessInterpolation('LArm', 1, 0.01)
-        self.proxy.stiffnessInterpolation('RArm', 1, 0.01)
+        self.proxy.setStiffnesses("Body", 1)
+
 
     def hit_key(self,key, sleep_time=0.5):
         arm,position,default = positions.get_position(key)
@@ -87,7 +87,7 @@ class Effector:
         self.proxy.setAngles(arm,position[0],1)
         time.sleep(0.25)
         self.proxy.setAngles(wrist,position[1],1)
-        time.sleep(0.3)
+        time.sleep(0.4)
         self.proxy.setAngles(arm,position[0],1)
         time.sleep(0.15)
         self.proxy.setAngles(arm,default,1)            

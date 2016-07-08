@@ -3,11 +3,10 @@ from speechrecognition import SpeechRecognition
 from naoqi import ALProxy
 from effector import Effector
 import time, random
-from alfacetracker_start import FaceTracker
 
 maxsongs = len(jukebox.songslist)
 speech = None
-IP = "10.0.1.4"
+IP = "169.254.95.24"
 PORT = 9559
 condition="social"
 posture = None
@@ -31,11 +30,10 @@ def experiment(effector):
         song = arr[i]
         speech.say_song(jukebox.titles[song])
         play_song(song,effector)
-        speech.start_recognition(last_song = (i == maxsongs-1))
-        
+        speech.start_recognition(last_song = (i == maxsongs-1))       
     speech.detroduce()
 
-def main(IP = "10.0.1.7", PORT = 9559, condition="social"):
+def main(IP = "10.0.1.7", PORT = 9559, condition="psycho"):
     # Enable or disable tracking.
     
     
@@ -46,5 +44,5 @@ def main(IP = "10.0.1.7", PORT = 9559, condition="social"):
     speech = SpeechRecognition(IP, PORT, condition=condition)
     experiment(effector)    
     #speech.speechRecProxy.unsubscribe("ASR")
-
+    
 main(IP,PORT,condition)
