@@ -244,32 +244,32 @@ class SpeechRecognition:
         else:
             if condition != 'psycho':    
         
-                if word == "zero":        
+                if word == "one" or word =="two":        
                     self.speakProxy.say("You are making a joke, right? Please tell me that was a joke.")
                     self.speakProxy.say("Are you trying to make me sad? ")
                     self.speakProxy.say("Well, you try to play a xylophone without proper hands.")
-                elif word == "one" or word =="two" or word == "three" :
+                elif word == "three" or word == "four":
                     if lottery == 1:
                         self.speakProxy.say("I'm sorry it was that bad...")
                     elif lottery == 2:
                         self.speakProxy.say("I know, I made so many mistakes.")
                     elif lottery == 3:
                         self.speakProxy.say("I am sorry I wasted your time.")
-                elif word == "four" or word == "five":
+                elif word == "five" or word == "six":
                     if lottery == 1:
                         self.speakProxy.say("Ah, still too many mistakes!")
                     elif lottery == 2:
                         self.speakProxy.say("This is so embarrassing.")
                     elif lottery == 3:
                         self.speakProxy.say("Sorry, I forgot some of the notes.")            
-                elif word == "six":
+                elif word == "seven":
                     if lottery == 1:
                         self.speakProxy.say("The piece is a bit difficult for me, but I am glad you at least weren't completely unsatisfied.")
                     elif lottery == 2:
                         self.speakProxy.say("Well a it is a passing grade, but I hope I can do better than this.")
                     elif lottery == 3:    
                         self.speakProxy.say("I had hoped I did better, but it's better than nothing.")
-                elif word == "seven":
+                elif word == "eight":
                     if lottery == 1:
                         self.speakProxy.say("I am glad you kind of liked it!")
                     elif lottery == 2:
@@ -277,7 +277,7 @@ class SpeechRecognition:
                     elif lottery == 3:
                         self.speakProxy.say("Wow, you gave me a eight!")
                     
-                elif word == "eight" or word == "nine":
+                elif word == "nine":
                     if lottery == 1:
                         self.speakProxy.say("You like that?")
                     elif lottery == 2:
