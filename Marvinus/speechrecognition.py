@@ -215,7 +215,7 @@ class SpeechRecognition:
                     elif lottery == 2:
                         self.speakProxy.say("I will be a professional one day! But I need to practice a lot more, so how about the next song?")
                     elif lottery == 3:
-                        self.speakProxy.say("Wow, you gave me a seven! Now I'm even more motivated to show you the rest.")
+                        self.speakProxy.say("Wow, you gave me an eight! Now I'm even more motivated to show you the rest.")
                     
                 elif word == "nine":
                     if lottery == 1:
